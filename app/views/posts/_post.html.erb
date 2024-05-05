@@ -1,0 +1,17 @@
+<div class="col">
+  <div class="card shadow-sm">
+    <%= cl_image_tag post.thumbnail.key, :crop => "thumb", height: 225, class: "card-img-top" %>
+    <div class="card-body">
+      <p class="card-text"><%= post.title %></p>
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="btn-group">
+          <%= link_to "View", post, class: "btn btn-sm btn-outline-secondary", data: { turbo_frame: "_top" } %>
+          <% if current_user&.is_admin %>
+            <%= link_to "Edit", edit_post_path(post), class: "btn btn-sm btn-outline-secondary",  data: { turbo_frame: "_top" } %>
+          <% end %>
+        </div>
+        <small class="text-body-secondary">9 mins</small>
+      </div>
+    </div>
+  </div>
+</div>

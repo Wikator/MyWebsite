@@ -1,0 +1,92 @@
+<style>
+    .reaction-buttons {
+        border: none;
+        background: none;
+        color: #333;
+        font-size: 20px;
+        display: flex;
+        gap: 10px; /* Ensures spacing between buttons */
+    }
+
+    .reaction-buttons .reaction-btn {
+        padding: 5px 10px; /* Padding for better clickability */
+        transition: all 0.3s ease; /* Smooth transition for hover and focus */
+    }
+
+    .reaction-buttons .reaction-btn.selected {
+        color: blue; /* Bright color for visibility */
+        border: 2px solid blue; /* Border to highlight selected */
+    }
+
+    .reaction-buttons .reaction-btn:not(.selected) {
+        color: grey; /* More subdued color for unselected */
+        background: #f0f0f0; /* Light background for unselected */
+        border: 2px solid transparent; /* Maintain layout consistency */
+    }
+
+    .reaction-buttons .reaction-btn i {
+        margin-right: 5px;
+    }
+</style>
+
+
+<%= turbo_frame_tag "reactions" do %>
+  <div id="like-dislike-ratio-<%= post.id %>">
+    <p>Likes: <%= post.reactions.where(liked: true).count %></p>
+    <p>Dislikes: <%= post.reactions.where(liked: false).count %></p>
+
+    <% if current_user.present? %>
+      <% user_reaction = post.reactions.find_by(user: current_user) %>
+
+      <div class="reaction-buttons">
+
+        <% if user_reaction.present? %>
+          <% if user_reaction.liked %>
+            <%= link_to post_reaction_path(post, user_reaction),
+                        method: :delete,
+                        data: { turbo_method: :delete },
+                        class: "reaction-btn selected" do %>
+              <i class="fa fa-thumbs-up"></i>
+            <% end %>
+          <% else %>
+            <%= form_with model: [post, user_reaction], method: :put do |f| %>
+              <%= f.hidden_field :liked, value: true %>
+              <%= f.button type: 'submit', class: "reaction-btn" do %>
+                <i class="fa fa-thumbs-up"></i>
+              <% end %>
+            <% end %>
+          <% end %>
+
+          <% if !user_reaction.liked %>
+            <%= link_to post_reaction_path(post, user_reaction),
+                        method: :delete,
+                        data: { turbo_method: :delete },
+                        class: "reaction-btn selected" do %>
+              <i class="fa fa-thumbs-down"></i>
+            <% end %>
+          <% else %>
+            <%= form_with model: [post, user_reaction], method: :patch do |f|  %>
+              <%= f.hidden_field :liked, value: false  %>
+              <%= f.button type: 'submit', class: "reaction-btn" do %>
+                <i class="fa fa-thumbs-down"></i>
+              <% end %>
+            <% end %>
+          <% end %>
+        <% else %>
+          <%= form_with model: [post, Reaction.new], method: :post do |f| %>
+            <%= f.hidden_field :liked, value: true %>
+            <%= f.button type: 'submit', class: "reaction-btn" do %>
+              <i class="fa fa-thumbs-up"></i>
+            <% end %>
+          <% end %>
+          <%= form_with model: [post, Reaction.new], method: :post do |f|  %>
+            <%= f.hidden_field :liked, value: false  %>
+            <%= f.button type: 'submit', class: "reaction-btn" do %>
+              <i class="fa fa-thumbs-down"></i>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
+    <%  end %>
+  </div>
+<% end %>

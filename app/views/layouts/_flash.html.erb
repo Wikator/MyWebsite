@@ -1,0 +1,19 @@
+<style>
+    #notification-container {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 1000;
+        width: auto;
+    }
+</style>
+
+
+<% flash.each do |type, message| %>
+  <div id="notification-container">
+    <div class="alert <%= bootstrap_class_for_flash(type) %> alert-dismissible fade show" role="alert">
+      <%= message %>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+  </div>
+<% end %>

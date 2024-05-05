@@ -1,0 +1,20 @@
+<%= turbo_frame_tag "comment_#{comment.id}" do %>
+  <div id="comment_<%= comment.id %>" class="card mb-2">
+    <div class="card-body">
+      <strong><%= comment.user.username %></strong>
+      <p><%= comment.content %> </p>
+      <% if comment.edited %>
+        <p class="text-muted">edited</p>
+      <% end %>
+      <% if comment.user_id == current_user&.id %>
+        <div class="btn-group">
+          <%= link_to "Edit", edit_post_comment_path(post_id, comment.id), class: "btn btn-sm btn-secondary" %>
+          <%= link_to "Delete", post_comment_path(post_id, comment),
+                      method: :delete,
+                      data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
+                      class: "btn btn-sm btn-danger" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>

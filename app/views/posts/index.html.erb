@@ -1,0 +1,43 @@
+<section class="py-5 text-center container">
+  <div class="row py-lg-5">
+    <div class="col-lg-6 col-md-8 mx-auto">
+      <h1 class="fw-light">My blog</h1>
+      <p class="lead text-body-secondary">
+        Here I will post my guides, thoughts and other information worth sharing.<br />
+        Make sure you are logged in if you want to comment or react.
+      </p>
+      <% if current_user == nil %>
+        <p>
+          <%= link_to 'Register', register_path, class: "btn btn-primary my-2" %>
+          <%= link_to 'Login', login_path, class: "btn btn-secondary my-2" %>
+        </p>
+      <% else %>
+        <p>
+          <%= button_to 'Logout', logout_path, method: :delete, form: { data: { turbo: true } },
+                        class: "btn btn-primary my-2" %>
+          <% if current_user.is_admin %>
+            <%= link_to 'Create new post', new_post_path, class: "btn btn-secondary my-2" %>
+          <% end %>
+        </p>
+      <% end %>
+    </div>
+  </div>
+</section>
+
+<div class="album py-5 bg-body-tertiary">
+  <div class="container">
+    <%= turbo_frame_tag "posts" do %>
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 mb-3">
+        <%= render @posts %>
+      </div>
+      <% if @pagy.pages > 1 %>
+        <div class="d-flex justify-content-center">
+          <%== pagy_bootstrap_nav(@pagy) %>
+        </div>
+        <div class="text-center text-muted">
+          <%== pagy_info(@pagy) %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>

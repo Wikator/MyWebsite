@@ -1,0 +1,15 @@
+@import 'bootstrap/scss/bootstrap';
+@import 'bootstrap-icons/font/bootstrap-icons';
+//@import "~bootswatch/dist/journal/bootstrap.min.css";
+
+.noscript-warning {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  width: 300px;
+  z-index: 1000;
+}
+
+html[aria-busy="true"] {
+  scroll-behavior: auto !important;
+}

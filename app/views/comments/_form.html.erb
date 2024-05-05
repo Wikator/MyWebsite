@@ -1,0 +1,16 @@
+<%= form_with model: [post, comment] do |form| %>
+  <div class="mb-3">
+    <%= form.text_area :content,
+                       class: 'form-control',
+                       rows: 3,
+                       placeholder: "Add a comment...",
+                       id: "comment_body" %>
+    <% @comment.errors.full_messages_for(:content).each do |message| %>
+      <div class="invalid-feedback d-block">
+        <%= message %>
+      </div>
+    <% end %>
+  </div>
+
+  <%= form.submit "submit", class: "btn btn-primary shadow-sm" %>
+<% end %>

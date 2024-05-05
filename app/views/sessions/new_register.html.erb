@@ -1,0 +1,33 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card">
+        <h5 class="card-header">Register</h5>
+        <div class="card-body">
+          <%= form_with url: register_path do |form| %>
+            <div class="mb-3">
+              <%= form.label :email, class: 'form-label' %>
+              <%= form.text_field :email, class: 'form-control', value: params[:email] || '',
+                                  autofocus: true %>
+            </div>
+            <div class="mb-3">
+              <%= form.label :username, class: 'form-label' %>
+              <%= form.text_field :username, class: 'form-control', value: params[:username] || ''%>
+            </div>
+            <div class="mb-3">
+              <%= form.label :password, class: 'form-label' %>
+              <%= form.password_field :password, class: 'form-control' %>
+            </div>
+            <div class="mb-3">
+              <%= form.label :password_confirmation, class: 'form-label' %>
+              <%= form.password_field :password_confirmation, class: 'form-control' %>
+            </div>
+            <div class="mb-3">
+              <%= form.submit "Register", class: 'btn btn-primary' %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
