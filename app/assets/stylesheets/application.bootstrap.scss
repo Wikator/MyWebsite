@@ -1,13 +1,18 @@
 @import 'bootstrap/scss/bootstrap';
 @import 'bootstrap-icons/font/bootstrap-icons';
+@import "config/animations";
 //@import "~bootswatch/dist/journal/bootstrap.min.css";
 
-.noscript-warning {
+.flash-container {
   position: fixed;
-  top: 10px;
-  right: 10px;
-  width: 300px;
+  bottom: 20px;
+  right: 20px;
   z-index: 1000;
+  width: auto;
+}
+
+.flash-message {
+  animation: appear-then-fade 4s both;
 }
 
 html[aria-busy="true"] {

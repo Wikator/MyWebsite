@@ -24,9 +24,6 @@ class CommentsController < ApplicationController
         format.html { redirect_to @post, notice: }
       end
     else
-      old_errors = @comment.errors.dup
-      @comment = Comment.new
-      @comment.errors.copy!(old_errors)
       render 'posts/show', status: :unprocessable_entity
     end
   end
