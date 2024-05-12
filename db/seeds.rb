@@ -11,4 +11,4 @@
 #   end
 
 User.create!(username: 'Wiktor Szymulewicz', email: 'wiktor@szymulewicz.com', is_admin: true,
-             password: 'password', password_confirmation: 'password')
+             password: ENV['INITIAL_PASSWORD'], password_confirmation: ENV['INITIAL_PASSWORD'])
