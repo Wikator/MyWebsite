@@ -4,6 +4,24 @@
 ARG RUBY_VERSION=3.3.1
 FROM registry.docker.com/library/ruby:$RUBY_VERSION-slim as base
 
+ARG SECRET_KEY_BASE
+ENV SECRET_KEY_BASE=${SECRET_KEY_BASE}
+
+ARG RAILS_MASTER_KEY
+ENV RAILS_MASTER_KEY=${RAILS_MASTER_KEY}
+
+ARG CLOUD_NAME
+ENV CLOUD_NAME=${CLOUD_NAME}
+
+ARG API_KEY
+ENV API_KEY=${API_KEY}
+
+ARG API_SECRET
+ENV API_SECRET=${API_SECRET}
+
+ARG INITIAL_PASSWORD
+ENV INITIAL_PASSWORD=${INITIAL_PASSWORD}
+
 # Rails app lives here
 WORKDIR /rails
 
@@ -50,7 +68,8 @@ RUN bundle exec bootsnap precompile app/ lib/
 RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile
 
 # Run database migrations and seed data
-RUN ./bin/rails db:migrate
+RUN ./bin/rails db:migrate && \
+    ./bin/rails db:seed
 
 
 # Final stage for app image
