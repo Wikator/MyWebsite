@@ -11,8 +11,8 @@ WORKDIR /rails
 ENV RAILS_ENV="production" \
     BUNDLE_DEPLOYMENT="1" \
     BUNDLE_PATH="/usr/local/bundle" \
-    BUNDLE_WITHOUT="development"
-
+    BUNDLE_WITHOUT="development" \
+    SECRET_KEY_BASE="your_secret_key_base_here"
 
 # Throw-away build stage to reduce size of final image
 FROM base as build
@@ -48,6 +48,10 @@ RUN bundle exec bootsnap precompile app/ lib/
 
 # Precompiling assets for production without requiring secret RAILS_MASTER_KEY
 RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile
+
+# Run database migrations and seed data
+RUN ./bin/rails db:migrate && \
+    ./bin/rails db:seed
 
 
 # Final stage for app image
