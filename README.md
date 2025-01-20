@@ -1,24 +1,20 @@
-# README
+# Portfolio + Blog
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This app is a simple portfolio website. It features a main page, which displays owner's skills, experiences, and completed projects. Links to the GitHub page and projects are also present on this page.
 
-Things you may want to cover:
+App also features a blog. Owner has an ability to add and edit new posts using markdown, including a thumbnail. Posts are then displayed on the blog page, where logged in users can see more details, as well as leave comments and reactions.
 
-* Ruby version
+# Features:
 
-* System dependencies
+- Portfolio main page
+- Blog main page, displaying posts
+- Pagination
+- Authentication and authorization
+- Post create and edit pages, available only for the owner
+- Post details page
+- Writing, editing, and deleting comments
+- Leaving reactions
 
-* Configuration
+# Diagram
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+![diagram](uml.png)
