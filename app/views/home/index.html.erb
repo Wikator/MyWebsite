@@ -17,134 +17,93 @@
 </div>
 
 <div class="container marketing">
-
   <div class="row text-center">
-    <div class="col-lg-4 mb-3">
-      <%= image_tag "aspnet.png", width: 140, height: 140, class: "rounded-circle mb-2" %>
-      <h2 class="fw-normal">ASP.NET Core</h2>
-      <p>.NET Core, and especially ASP.NET Core, are technologies I have been learning for 2+ years now. I'm quite
-        familiar with MVC applications, both for server-side apps and APIs, and I also have some experience working
-        with Blazor.</p>
-      <p>
-        <a class="btn btn-secondary" href="https://github.com/Wikator?tab=repositories&q=&type=&language=c%23&sort=">See more</a>
-      </p>
-    </div>
-    <div class="col-lg-4 mb-3">
-      <%= image_tag "rubyonrails.png", width: 140, height: 140, class: "rounded-circle mb-2" %>
-      <h2 class="fw-normal">Ruby on Rails</h2>
-      <p>A framework I'm constantly learning, mostly for APIs, but also for server-side apps like this one. Though I have very few completed projects that use this framework, I'm
-        very fond of Ruby and have a basic understanding of Rails' many features.</p>
-      <p>
-        <a class="btn btn-secondary" href="https://github.com/Wikator?tab=repositories&q=&type=&language=ruby&sort=">See more</a>
-      </p>
-    </div>
-    <div class="col-lg-4 mb-3">
-      <%= image_tag "unity.png", width: 140, height: 140, class: "rounded-circle mb-2" %>
-      <h2 class="fw-normal">Unity</h2>
-      <p>Through Unity, I first learned concepts of static and object-oriented programming. I spent a lot of free time making
-        games for fun, including a larger, multiplayer game.</p>
-      <p>
-        <a class="btn btn-secondary" href="https://github.com/Wikator/Tanks">See more</a>
-      </p>
-    </div>
-    <div class="col-lg-4 mb-3">
-      <%= image_tag "springboot.png", width: 140, height: 140, class: "rounded-circle mb-2" %>
-      <h2 class="fw-normal">Spring Boot</h2>
-      <p>Spring Boot is a framework I've had contact with through a Hackathon and group projects.</p>
-      <p>
-        <a class="btn btn-secondary" href="https://github.com/WIP-Work-In-Progress/wip-platform-be">See more</a>
-      </p>
-    </div>
-    <div class="col-lg-4 mb-3">
-      <%= image_tag "next.png", width: 140, height: 140, class: "rounded-circle mb-2" %>
-      <h2 class="fw-normal">Next.js</h2>
-      <p>I've learned the basics of React and Next.js in University. The biggest project I've made so far uses Next on
-        frontend.</p>
-      <p>
-        <a class="btn btn-secondary" href="https://moviesservice.onrender.com">See more</a>
-      </p>
-    </div>
-    <div class="col-lg-4 mb-3">
-      <%= image_tag "angular.png", width: 140, height: 140, class: "rounded-circle mb-2" %>
-      <h2 class="fw-normal">Angular</h2>
-      <p>I know the basics of Angular through a number of smaller projects, and mostly through a course.</p>
-      <p>
-        <a class="btn btn-secondary" href="https://github.com/Wikator/Course3">See more</a>
-      </p>
-    </div>
-  </div>
+    <%= render "skill",
+               image: "aspnet.png",
+               text: ".NET Core, and especially ASP.NET Core, are technologies I have been learning for 2+ years now. I'm quite familiar with MVC applications, both for server-side apps and APIs, and I also have some experience working with Blazor.",
+               url: "https://github.com/Wikator?tab=repositories&q=&type=&language=c%23&sort=",
+               title: "ASP.NET Core" %>
 
+  <%= render "skill",
+             image: "rubyonrails.png",
+             text: "A framework I'm constantly learning, mostly for APIs, but also for server-side apps like this one. Though I have very few completed projects that use this framework, I'm very fond of Ruby and have a basic understanding of Rails' many features.",
+             url: "https://github.com/Wikator?tab=repositories&q=&type=&language=ruby&sort=",
+             title: "Ruby on Rails" %>
+
+  <%= render "skill",
+             image: "unity.png",
+             text: "Through Unity, I first learned concepts of static and object-oriented programming. I spent a lot of free time making games for fun, including a larger, multiplayer game.",
+             url: "https://github.com/Wikator/Tanks",
+             title: "Unity" %>
+
+  <%= render "skill",
+             image: "springboot.png",
+             text: "Spring Boot is a framework I've had contact with through a Hackathon and group projects.",
+             url: "https://https://github.com/WIP-Work-In-Progress/wip-platform-be",
+             title: "Spring Boot" %>
+
+  <%= render "skill",
+             image: "next.png",
+             text: "I've learned the basics of React and Next.js in University. The biggest project I've made so far uses Next on frontend.",
+             url: "https://moviesservice.onrender.com",
+             title: "Next.js"%>
+
+  <%= render "skill",
+             image: "angular.png",
+             text: "I know the basics of Angular through a number of smaller projects, and mostly through a course.",
+             url: "https://github.com/Wikator/Course3",
+             title: "Angular" %>
+  </div>
 
   <div class="text-center mt-2">
     <h1>Featured Projects</h1>
   </div>
 
   <hr class="featurette-divider">
-
-  <div class="row featurette">
-    <div class="col-md-7">
-      <h2 class="featurette-heading fw-normal lh-1">Movies Service</h2>
-      <p class="lead">The biggest project I've made. It uses Neo4J as a database, ASP.NET Core on the backend,
+  <%= render "project",
+             title: "Movies Service",
+             text: "The biggest project I've made. It uses Neo4J as a database, ASP.NET Core on the backend,
         and NEXT.js on the frontend. Development took quite a while because I've learned a great deal
         about non-SQL databases, many protocols, including MQTT, SSE, etc., and tried to keep the code as clean
-        as possible.<br />
-        <a href="https://moviesservice.onrender.com">Site</a><br />
-        <a href="https://github.com/UniversityOfGdanskProjects/projektprogramistyczny-Wikator">Backend</a>
-
-      </p>
-    </div>
-    <div class="col-md-5">
-      <%= image_tag "moviesservice.png", width: 500, height: 500, class: "img-fluid mx-auto" %>
-    </div>
-  </div>
+        as possible.",
+             image: "moviesservice.png",
+             links: [
+               { url: "https://moviesservice.onrender.com", title: "Site" },
+               { url: "https://github.com/UniversityOfGdanskProjects/projektprogramistyczny-Wikator", title: "Backend" }
+             ] %>
 
   <hr class="featurette-divider">
-
-  <div class="row featurette">
-    <div class="col-md-7">
-      <h2 class="featurette-heading fw-normal lh-1">Advent of Code <span class="text-body-secondary">2023</span></h2>
-      <p class="lead">In 2023, I took part in Advent of Code. Though I have not completed every single problem,
-        I used several different languages and always tried to make the code as readable as possible.<br />
-        <a href="https://github.com/Wikator/AdventOfCode2023">Link to repository</a></p>
-    </div>
-    <div class="col-md-5">
-      <%= image_tag "adventofcode2023.png", width: 500, height: 500, class: "img-fluid mx-auto" %>
-    </div>
-  </div>
+  <%= render "project",
+             title: "Advent of Code 2023",
+             text: "In 2023, I took part in Advent of Code. Though I have not completed every single problem,
+        I used several different languages and always tried to make the code as readable as possible.",
+             image: "adventofcode2023.png",
+             links: [
+               { url: "https://github.com/Wikator/AdventOfCode2023", title: "Link to repository" }
+             ] %>
 
   <hr class="featurette-divider">
-
-  <div class="row featurette">
-    <div class="col-md-7">
-      <h2 class="featurette-heading fw-normal lh-1">Daily Sudoku</h2>
-      <p class="lead">Simple full-stack application written in Blazor that resulted in me wanting
+  <%= render "project",
+             title: "Daily Sudoku",
+             text: "Simple full-stack application written in Blazor that resulted in me wanting
         to write as fast sudoku-solving algorithm as I could. It has a few features like new, daily puzzles
-        being generated, saving progress, and the ability to create and save own puzzle.<br />
-        <a href="https://github.com/Wikator/DailySudoku">Link to repository</a>
-      </p>
-    </div>
-    <div class="col-md-5">
-      <%= image_tag "dailysudoku.png", width: 500, height: 500, class: "img-fluid mx-auto" %>
-    </div>
-  </div>
+        being generated, saving progress, and the ability to create and save own puzzle.",
+             image: "dailysudoku.png",
+             links: [
+               { url: "https://github.com/Wikator/DailySudoku", title: "Link to repository" }
+             ] %>
 
   <hr class="featurette-divider">
-
-  <div class="row featurette">
-    <div class="col-md-7">
-      <h2 class="featurette-heading fw-normal lh-1">Tanks</h2>
-      <p class="lead">Topdown game made in Unity, that I worked on in 2022. It featured a single-player mode, as well
-        as multiplayer through Steam Network. It took a lot of work, including scripts, graphics, and overall logic.<br />
-        <a href="https://github.com/Wikator/Tanks">Link to repository</a>
-      </p>
-    </div>
-    <div class="col-md-5">
-      <%= image_tag "tanks.png", width: 500, height: 500, class: "img-fluid mx-auto" %>
-    </div>
-  </div>
+  <%= render "project",
+             title: "Tanks",
+             text: "Topdown game made in Unity, that I worked on in 2022. It featured a single-player mode, as well
+          as multiplayer through Steam Network. It took a lot of work, including scripts, graphics, and overall logic.",
+             image: "tanks.png",
+             links: [
+               { url: "https://github.com/Wikator/Tanks", title: "Link to repository" }
+             ] %>
 
   <hr class="featurette-divider">
-
 </div>
 
 <footer class="container">
